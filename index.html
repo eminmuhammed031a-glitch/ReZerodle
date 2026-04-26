@@ -1,0 +1,3012 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="google-site-verification" content="BURAYA_DAHA_SONRA_EKLEME_YAPACAGIM" />
+    <title>One Piece Haber | Yeni Dünya</title>
+    <link href="https://fonts.googleapis.com/css2?family=Pirata+One&family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --primary: #D4AF37;
+            --secondary: #8B0000;
+            --dark: #0a0a0a;
+            --glass: rgba(20, 20, 30, 0.7);
+            --glass-border: rgba(212, 175, 55, 0.3);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Roboto', sans-serif;
+            background: linear-gradient(135deg, #0f0c29, #302b63, #24243e);
+            color: #fff;
+            min-height: 100vh;
+            overflow-x: hidden;
+        }
+
+        /* Glassmorphism Utilities */
+        .glass {
+            background: var(--glass);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid var(--glass-border);
+            border-radius: 16px;
+        }
+
+        /* Header */
+        header {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            height: 70px;
+            background: rgba(10, 10, 10, 0.9);
+            backdrop-filter: blur(10px);
+            border-bottom: 2px solid var(--primary);
+            z-index: 1000;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 30px;
+        }
+
+        .logo {
+            font-family: 'Pirata One', cursive;
+            font-size: 2.5rem;
+            color: var(--primary);
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.8);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .logo i {
+            color: var(--secondary);
+        }
+
+        nav {
+            display: flex;
+            gap: 25px;
+            align-items: center;
+        }
+
+        nav a {
+            color: #fff;
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.3s;
+            position: relative;
+            padding: 5px 0;
+        }
+
+        nav a:hover {
+            color: var(--primary);
+        }
+
+        nav a::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--primary);
+            transition: width 0.3s;
+        }
+
+        nav a:hover::after {
+            width: 100%;
+        }
+
+        .user-section {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .user-avatar {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            border: 2px solid var(--primary);
+            cursor: pointer;
+            object-fit: cover;
+        }
+
+        .bounty-display {
+            background: linear-gradient(45deg, #8B0000, #DC143C);
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-weight: bold;
+            font-size: 0.9rem;
+            border: 1px solid var(--primary);
+        }
+
+        /* Main Container */
+        .container {
+            margin-top: 90px;
+            padding: 20px;
+            max-width: 1400px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        /* Hero Section */
+        .hero {
+            text-align: center;
+            padding: 60px 20px;
+            background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('luffy3.jpg');
+            background-size: cover;
+            background-position: center;
+            border-radius: 20px;
+            margin-bottom: 40px;
+            border: 2px solid var(--glass-border);
+        }
+
+        .hero h1 {
+            font-family: 'Pirata One', cursive;
+            font-size: 4rem;
+            margin-bottom: 20px;
+            color: var(--primary);
+            text-shadow: 3px 3px 6px rgba(0,0,0,0.8);
+        }
+
+        .hero p {
+            font-size: 1.3rem;
+            max-width: 600px;
+            margin: 0 auto 30px;
+            opacity: 0.9;
+        }
+
+        .btn {
+            padding: 12px 30px;
+            border: none;
+            border-radius: 25px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: all 0.3s;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            font-size: 0.9rem;
+        }
+
+        .btn-primary {
+            background: linear-gradient(45deg, var(--primary), #FFD700);
+            color: #000;
+        }
+
+        .btn-secondary {
+            background: transparent;
+            border: 2px solid var(--primary);
+            color: var(--primary);
+        }
+
+        .btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 20px rgba(212, 175, 55, 0.4);
+        }
+
+        .btn:disabled {
+            opacity: 0.6;
+            cursor: not-allowed;
+            transform: none;
+        }
+
+        /* Grid Layout */
+        .grid {
+            display: grid;
+            grid-template-columns: 250px 1fr 300px;
+            gap: 25px;
+            margin-top: 30px;
+        }
+
+        /* Sidebar */
+        .sidebar {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        .sidebar-card {
+            padding: 20px;
+        }
+
+        .sidebar-card h3 {
+            font-family: 'Pirata One', cursive;
+            font-size: 1.5rem;
+            margin-bottom: 15px;
+            color: var(--primary);
+            border-bottom: 2px solid var(--glass-border);
+            padding-bottom: 10px;
+        }
+
+        .menu-item {
+            padding: 12px;
+            margin: 5px 0;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.3s;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .menu-item:hover {
+            background: rgba(212, 175, 55, 0.1);
+            transform: translateX(5px);
+        }
+
+        .menu-item i {
+            width: 20px;
+            color: var(--primary);
+        }
+
+        /* Main Content */
+        .main-content {
+            display: flex;
+            flex-direction: column;
+            gap: 25px;
+        }
+
+        .content-card {
+            padding: 25px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .content-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background: linear-gradient(90deg, var(--primary), transparent);
+        }
+
+        .section-title {
+            font-family: 'Pirata One', cursive;
+            font-size: 2rem;
+            margin-bottom: 20px;
+            color: var(--primary);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        /* News Cards */
+        .news-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+            margin-top: 20px;
+        }
+
+        .news-card {
+            background: rgba(0,0,0,0.3);
+            border-radius: 12px;
+            overflow: hidden;
+            border: 1px solid var(--glass-border);
+            transition: transform 0.3s;
+            cursor: pointer;
+        }
+
+        .news-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+        }
+
+        .news-image {
+            width: 100%;
+            height: 180px;
+            background-size: cover;
+            background-position: center;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 3rem;
+            color: var(--primary);
+        }
+
+        .news-content {
+            padding: 20px;
+        }
+
+        .news-tag {
+            display: inline-block;
+            padding: 4px 12px;
+            background: var(--secondary);
+            border-radius: 12px;
+            font-size: 0.75rem;
+            margin-bottom: 10px;
+        }
+
+        .news-title {
+            font-size: 1.2rem;
+            margin-bottom: 10px;
+            font-weight: 600;
+        }
+
+        .news-meta {
+            font-size: 0.85rem;
+            opacity: 0.7;
+            display: flex;
+            gap: 15px;
+        }
+
+        /* Countdown Section */
+        .countdown-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            margin: 20px 0;
+        }
+
+        .countdown-card {
+            background: rgba(0,0,0,0.4);
+            padding: 20px;
+            border-radius: 12px;
+            text-align: center;
+            border: 1px solid var(--glass-border);
+        }
+
+        .countdown-title {
+            font-family: 'Pirata One', cursive;
+            font-size: 1.3rem;
+            color: var(--primary);
+            margin-bottom: 15px;
+        }
+
+        .countdown-timer {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: #fff;
+            font-family: 'Courier New', monospace;
+        }
+
+        /* Games Section */
+        .game-container {
+            text-align: center;
+            padding: 40px;
+        }
+
+        .quiz-container {
+            max-width: 600px;
+            margin: 0 auto;
+            text-align: left;
+        }
+
+        .quiz-question {
+            font-size: 1.3rem;
+            margin-bottom: 20px;
+            padding: 20px;
+            background: rgba(0,0,0,0.3);
+            border-radius: 12px;
+            border-left: 4px solid var(--primary);
+        }
+
+        .quiz-options {
+            display: grid;
+            gap: 10px;
+        }
+
+        .quiz-option {
+            padding: 15px;
+            background: rgba(255,255,255,0.05);
+            border: 2px solid transparent;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .quiz-option:hover {
+            background: rgba(212, 175, 55, 0.1);
+            border-color: var(--primary);
+        }
+
+        .quiz-option.correct {
+            background: rgba(0,255,0,0.2);
+            border-color: #00ff00;
+        }
+
+        .quiz-option.wrong {
+            background: rgba(255,0,0,0.2);
+            border-color: #ff0000;
+        }
+
+        /* Social Features */
+        .theory-card {
+            background: rgba(0,0,0,0.3);
+            padding: 20px;
+            border-radius: 12px;
+            margin-bottom: 15px;
+            border: 1px solid var(--glass-border);
+        }
+
+        .theory-header {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 15px;
+        }
+
+        .theory-avatar {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            border: 2px solid var(--primary);
+            cursor: pointer;
+            object-fit: cover;
+        }
+
+        .theory-author {
+            font-weight: 600;
+            cursor: pointer;
+        }
+
+        .theory-time {
+            font-size: 0.8rem;
+            opacity: 0.6;
+        }
+
+        .theory-actions {
+            display: flex;
+            gap: 15px;
+            margin-top: 15px;
+            padding-top: 15px;
+            border-top: 1px solid var(--glass-border);
+        }
+
+        .action-btn {
+            background: none;
+            border: none;
+            color: #fff;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+            opacity: 0.7;
+            transition: all 0.3s;
+            padding: 5px 10px;
+            border-radius: 5px;
+        }
+
+        .action-btn:hover {
+            opacity: 1;
+            background: rgba(255,255,255,0.1);
+        }
+
+        .action-btn.liked {
+            color: #00ff00;
+            opacity: 1;
+        }
+
+        .action-btn.disliked {
+            color: #ff0000;
+            opacity: 1;
+        }
+
+        /* Chat */
+        .chat-container {
+            height: 400px;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .chat-messages {
+            flex: 1;
+            overflow-y: auto;
+            padding: 15px;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .chat-message {
+            display: flex;
+            gap: 10px;
+            align-items: flex-start;
+        }
+
+        .chat-avatar {
+            width: 35px;
+            height: 35px;
+            border-radius: 50%;
+            cursor: pointer;
+            border: 2px solid transparent;
+            transition: all 0.3s;
+            object-fit: cover;
+        }
+
+        .chat-avatar:hover {
+            border-color: var(--primary);
+            transform: scale(1.1);
+        }
+
+        .chat-bubble {
+            background: rgba(255,255,255,0.1);
+            padding: 10px 15px;
+            border-radius: 15px;
+            max-width: 200px;
+            word-wrap: break-word;
+        }
+
+        .chat-username {
+            font-size: 0.8rem;
+            color: var(--primary);
+            margin-bottom: 3px;
+            cursor: pointer;
+        }
+
+        .chat-input-area {
+            display: flex;
+            gap: 10px;
+            padding: 15px;
+            border-top: 1px solid var(--glass-border);
+        }
+
+        .chat-input {
+            flex: 1;
+            background: rgba(0,0,0,0.3);
+            border: 1px solid var(--glass-border);
+            color: #fff;
+            padding: 10px 15px;
+            border-radius: 20px;
+            outline: none;
+        }
+
+        .chat-input:focus {
+            border-color: var(--primary);
+        }
+
+        /* Modals */
+        .modal-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0,0,0,0.8);
+            backdrop-filter: blur(5px);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 2000;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s;
+        }
+
+        .modal-overlay.active {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .modal {
+            background: linear-gradient(135deg, #1a1a2e, #16213e);
+            border: 2px solid var(--primary);
+            border-radius: 20px;
+            width: 90%;
+            max-width: 500px;
+            max-height: 90vh;
+            overflow-y: auto;
+            transform: scale(0.8);
+            transition: transform 0.3s;
+            position: relative;
+        }
+
+        .modal-overlay.active .modal {
+            transform: scale(1);
+        }
+
+        .modal-header {
+            padding: 25px;
+            border-bottom: 1px solid var(--glass-border);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .modal-title {
+            font-family: 'Pirata One', cursive;
+            font-size: 2rem;
+            color: var(--primary);
+        }
+
+        .modal-close {
+            background: none;
+            border: none;
+            color: #fff;
+            font-size: 1.5rem;
+            cursor: pointer;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s;
+        }
+
+        .modal-close:hover {
+            background: rgba(255,255,255,0.1);
+            color: var(--primary);
+        }
+
+        .modal-body {
+            padding: 25px;
+        }
+
+        /* Auth Styles */
+        .auth-tabs {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 25px;
+            border-bottom: 2px solid var(--glass-border);
+        }
+
+        .auth-tab {
+            flex: 1;
+            padding: 12px;
+            background: none;
+            border: none;
+            color: #fff;
+            cursor: pointer;
+            font-weight: 600;
+            position: relative;
+            transition: all 0.3s;
+        }
+
+        .auth-tab.active {
+            color: var(--primary);
+        }
+
+        .auth-tab.active::after {
+            content: '';
+            position: absolute;
+            bottom: -2px;
+            left: 0;
+            right: 0;
+            height: 2px;
+            background: var(--primary);
+        }
+
+        .auth-form {
+            display: none;
+        }
+
+        .auth-form.active {
+            display: block;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 500;
+            color: rgba(255,255,255,0.8);
+        }
+
+        .form-input {
+            width: 100%;
+            padding: 12px 15px;
+            background: rgba(0,0,0,0.3);
+            border: 2px solid var(--glass-border);
+            border-radius: 8px;
+            color: #fff;
+            font-size: 1rem;
+            transition: all 0.3s;
+        }
+
+        .form-input:focus {
+            outline: none;
+            border-color: var(--primary);
+        }
+
+        .file-input-wrapper {
+            position: relative;
+            overflow: hidden;
+            display: inline-block;
+            width: 100%;
+        }
+
+        .file-input-wrapper input[type=file] {
+            position: absolute;
+            left: -9999px;
+        }
+
+        .file-input-label {
+            display: block;
+            padding: 12px;
+            background: rgba(0,0,0,0.3);
+            border: 2px dashed var(--glass-border);
+            border-radius: 8px;
+            text-align: center;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .file-input-label:hover {
+            border-color: var(--primary);
+            background: rgba(212, 175, 55, 0.1);
+        }
+
+        .preview-image {
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 3px solid var(--primary);
+            margin: 10px auto;
+            display: none;
+        }
+
+        .preview-image.active {
+            display: block;
+        }
+
+        /* Profile Modal */
+        .profile-header {
+            text-align: center;
+            padding: 30px;
+            background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('luffy3.jpg');
+            background-size: cover;
+            border-radius: 15px;
+            margin-bottom: 20px;
+        }
+
+        .profile-avatar-large {
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            border: 4px solid var(--primary);
+            margin-bottom: 15px;
+            object-fit: cover;
+        }
+
+        .profile-name {
+            font-family: 'Pirata One', cursive;
+            font-size: 2rem;
+            margin-bottom: 5px;
+        }
+
+        .profile-bio {
+            font-size: 0.9rem;
+            opacity: 0.8;
+            margin-top: 10px;
+            font-style: italic;
+        }
+
+        .profile-stats {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 15px;
+            margin: 20px 0;
+        }
+
+        .stat-box {
+            text-align: center;
+            padding: 15px;
+            background: rgba(0,0,0,0.3);
+            border-radius: 10px;
+        }
+
+        .stat-value {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: var(--primary);
+        }
+
+        .stat-label {
+            font-size: 0.8rem;
+            opacity: 0.7;
+            margin-top: 5px;
+        }
+
+        .tabs {
+            display: flex;
+            gap: 5px;
+            margin-bottom: 20px;
+            border-bottom: 2px solid var(--glass-border);
+        }
+
+        .tab {
+            padding: 10px 20px;
+            background: none;
+            border: none;
+            color: #fff;
+            cursor: pointer;
+            position: relative;
+            transition: all 0.3s;
+        }
+
+        .tab.active {
+            color: var(--primary);
+        }
+
+        .tab.active::after {
+            content: '';
+            position: absolute;
+            bottom: -2px;
+            left: 0;
+            right: 0;
+            height: 2px;
+            background: var(--primary);
+        }
+
+        .tab-content {
+            display: none;
+        }
+
+        .tab-content.active {
+            display: block;
+        }
+
+        /* Saved Theory Card */
+        .saved-theory-card {
+            background: rgba(0,0,0,0.3);
+            padding: 15px;
+            border-radius: 10px;
+            margin-bottom: 10px;
+            border: 1px solid var(--glass-border);
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .saved-theory-card:hover {
+            border-color: var(--primary);
+            transform: translateX(5px);
+        }
+
+        .saved-theory-title {
+            font-weight: 600;
+            margin-bottom: 5px;
+            color: var(--primary);
+        }
+
+        .saved-theory-excerpt {
+            font-size: 0.9rem;
+            opacity: 0.8;
+            display: -webkit-box;
+            -webkit-line-clamp: 2;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+        }
+
+        /* Alliance Section */
+        .alliance-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            gap: 15px;
+        }
+
+        .alliance-card {
+            background: rgba(0,0,0,0.3);
+            padding: 20px;
+            border-radius: 12px;
+            text-align: center;
+            border: 1px solid var(--glass-border);
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .alliance-card:hover {
+            transform: translateY(-3px);
+            border-color: var(--primary);
+        }
+
+        .alliance-flag {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            margin: 0 auto 15px;
+            border: 3px solid var(--primary);
+            object-fit: cover;
+        }
+
+        .alliance-name {
+            font-weight: 600;
+            margin-bottom: 5px;
+        }
+
+        .alliance-members {
+            font-size: 0.85rem;
+            opacity: 0.7;
+        }
+
+        /* Poll */
+        .poll-option {
+            background: rgba(255,255,255,0.05);
+            padding: 15px;
+            margin: 10px 0;
+            border-radius: 8px;
+            cursor: pointer;
+            position: relative;
+            overflow: hidden;
+            transition: all 0.3s;
+        }
+
+        .poll-option:hover {
+            background: rgba(212, 175, 55, 0.1);
+        }
+
+        .poll-bar {
+            position: absolute;
+            left: 0;
+            top: 0;
+            bottom: 0;
+            background: rgba(212, 175, 55, 0.3);
+            transition: width 0.5s;
+            z-index: 0;
+        }
+
+        .poll-text {
+            position: relative;
+            z-index: 1;
+            display: flex;
+            justify-content: space-between;
+        }
+
+        /* Leaderboard */
+        .leaderboard-item {
+            display: flex;
+            align-items: center;
+            padding: 12px;
+            background: rgba(0,0,0,0.2);
+            margin: 8px 0;
+            border-radius: 8px;
+            border-left: 3px solid transparent;
+            transition: all 0.3s;
+        }
+
+        .leaderboard-item:hover {
+            background: rgba(212, 175, 55, 0.1);
+            border-left-color: var(--primary);
+        }
+
+        .leaderboard-rank {
+            width: 30px;
+            font-weight: bold;
+            color: var(--primary);
+            font-size: 1.2rem;
+        }
+
+        .leaderboard-avatar {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            margin: 0 12px;
+            border: 2px solid var(--primary);
+            object-fit: cover;
+        }
+
+        .leaderboard-info {
+            flex: 1;
+        }
+
+        .leaderboard-name {
+            font-weight: 600;
+        }
+
+        .leaderboard-bounty {
+            color: var(--primary);
+            font-weight: bold;
+        }
+
+        /* Content Text */
+        .content-text {
+            line-height: 1.8;
+            color: rgba(255,255,255,0.9);
+        }
+
+        .content-text h2 {
+            color: var(--primary);
+            margin: 25px 0 15px;
+            font-family: 'Pirata One', cursive;
+            font-size: 1.8rem;
+        }
+
+        .content-text h3 {
+            color: #fff;
+            margin: 20px 0 10px;
+            font-size: 1.3rem;
+        }
+
+        .content-text p {
+            margin-bottom: 15px;
+        }
+
+        .content-text strong {
+            color: var(--primary);
+        }
+
+        .content-text hr {
+            border: none;
+            border-top: 1px solid var(--glass-border);
+            margin: 20px 0;
+        }
+
+        /* Responsive */
+        @media (max-width: 1200px) {
+            .grid {
+                grid-template-columns: 1fr;
+            }
+            .sidebar {
+                order: 2;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+            nav {
+                display: none;
+            }
+            .news-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* Scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: rgba(0,0,0,0.2);
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: var(--primary);
+            border-radius: 4px;
+        }
+
+        /* Animations */
+        @keyframes float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
+        }
+
+        .floating {
+            animation: float 3s ease-in-out infinite;
+        }
+
+        @keyframes glow {
+            0%, 100% { box-shadow: 0 0 5px var(--primary); }
+            50% { box-shadow: 0 0 20px var(--primary), 0 0 40px var(--primary); }
+        }
+
+        .glowing {
+            animation: glow 2s ease-in-out infinite;
+        }
+
+        /* Utility */
+        .hidden {
+            display: none !important;
+        }
+
+        .text-center {
+            text-align: center;
+        }
+
+        .mt-20 {
+            margin-top: 20px;
+        }
+
+        .mb-20 {
+            margin-bottom: 20px;
+        }
+
+        /* Toast Notification */
+        .toast {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            background: var(--glass);
+            border: 1px solid var(--primary);
+            padding: 15px 25px;
+            border-radius: 12px;
+            z-index: 3000;
+            transform: translateX(400px);
+            transition: transform 0.3s;
+            backdrop-filter: blur(10px);
+        }
+
+        .toast.show {
+            transform: translateX(0);
+        }
+
+        /* Edit Profile Form */
+        .edit-form {
+            background: rgba(0,0,0,0.3);
+            padding: 20px;
+            border-radius: 12px;
+            margin-top: 20px;
+        }
+
+        textarea.form-input {
+            min-height: 100px;
+            resize: vertical;
+        }
+
+        /* Member List */
+        .member-list {
+            max-height: 300px;
+            overflow-y: auto;
+        }
+
+        .member-item {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 12px;
+            background: rgba(0,0,0,0.2);
+            margin: 5px 0;
+            border-radius: 8px;
+        }
+
+        .member-role {
+            font-size: 0.8rem;
+            color: var(--primary);
+            margin-left: 10px;
+        }
+
+        .kick-btn {
+            background: #dc3545;
+            color: white;
+            border: none;
+            padding: 5px 10px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 0.8rem;
+        }
+
+        .kick-btn:hover {
+            background: #c82333;
+        }
+
+        /* Friend Request */
+        .friend-request {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 15px;
+            background: rgba(0,0,0,0.2);
+            border-radius: 8px;
+            margin: 10px 0;
+        }
+
+        .friend-info {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .friend-actions {
+            display: flex;
+            gap: 10px;
+        }
+
+        .btn-small {
+            padding: 6px 12px;
+            font-size: 0.8rem;
+        }
+
+        .btn-success {
+            background: #28a745;
+            color: white;
+        }
+
+        .btn-danger {
+            background: #dc3545;
+            color: white;
+        }
+
+        /* Error Message */
+        .error-message {
+            color: #ff6b6b;
+            font-size: 0.9rem;
+            margin-top: 10px;
+            text-align: center;
+            padding: 10px;
+            background: rgba(255, 0, 0, 0.1);
+            border-radius: 8px;
+            border: 1px solid rgba(255, 0, 0, 0.3);
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Header -->
+    <header>
+        <div class="logo">
+            <i class="fas fa-skull-crossbones"></i>
+            One Piece Haber
+        </div>
+        <nav>
+            <a href="#news" onclick="showSection('news')">Haberler</a>
+            <a href="#theories" onclick="showSection('theories')">Teoriler</a>
+            <a href="#games" onclick="showSection('games')">Oyunlar</a>
+            <a href="#alliances" onclick="showSection('alliances')">İttifaklar</a>
+            <a href="#leaderboard" onclick="showSection('leaderboard')">Sıralama</a>
+        </nav>
+        <div class="user-section" id="userSection">
+            <button class="btn btn-primary" onclick="openAuthModal()">Giriş Yap</button>
+        </div>
+    </header>
+
+    <!-- Main Container -->
+    <div class="container">
+        
+        <!-- Hero Section -->
+        <div class="hero" id="heroSection">
+            <h1>Yeni Dünya'ya Hoş Geldiniz!</h1>
+            <p>One Piece dünyasının en büyük Türkçe topluluk platformu. Haberler, teoriler, oyunlar ve çok daha fazlası sizi bekliyor.</p>
+            <button class="btn btn-primary" onclick="openAuthModal()">Mürettebata Katıl</button>
+        </div>
+
+        <!-- Grid Layout -->
+        <div class="grid" id="mainGrid" style="display: none;">
+            
+            <!-- Left Sidebar -->
+            <aside class="sidebar">
+                <div class="sidebar-card glass">
+                    <h3><i class="fas fa-compass"></i> Menü</h3>
+                    <div class="menu-item" onclick="showSection('news')">
+                        <i class="fas fa-newspaper"></i> Haberler
+                    </div>
+                    <div class="menu-item" onclick="showSection('theories')">
+                        <i class="fas fa-lightbulb"></i> Teoriler
+                    </div>
+                    <div class="menu-item" onclick="showSection('games')">
+                        <i class="fas fa-gamepad"></i> Oyunlar
+                    </div>
+                    <div class="menu-item" onclick="showSection('alliances')">
+                        <i class="fas fa-users"></i> İttifaklar
+                    </div>
+                    <div class="menu-item" onclick="showSection('leaderboard')">
+                        <i class="fas fa-trophy"></i> Sıralama
+                    </div>
+                    <div class="menu-item" onclick="showSection('chat')">
+                        <i class="fas fa-comments"></i> Sohbet
+                    </div>
+                </div>
+
+                <div class="sidebar-card glass">
+                    <h3><i class="fas fa-poll"></i> Anket</h3>
+                    <div id="pollContainer">
+                        <p style="margin-bottom: 15px; font-size: 0.95rem;">En sevdiğiniz Yonko hangisi?</p>
+                        <div class="poll-option" onclick="votePoll(0)">
+                            <div class="poll-bar" id="pollBar0" style="width: 0%"></div>
+                            <div class="poll-text">
+                                <span>Shanks</span>
+                                <span id="pollPercent0">0%</span>
+                            </div>
+                        </div>
+                        <div class="poll-option" onclick="votePoll(1)">
+                            <div class="poll-bar" id="pollBar1" style="width: 0%"></div>
+                            <div class="poll-text">
+                                <span>Blackbeard</span>
+                                <span id="pollPercent1">0%</span>
+                            </div>
+                        </div>
+                        <div class="poll-option" onclick="votePoll(2)">
+                            <div class="poll-bar" id="pollBar2" style="width: 0%"></div>
+                            <div class="poll-text">
+                                <span>Luffy</span>
+                                <span id="pollPercent2">0%</span>
+                            </div>
+                        </div>
+                        <div class="poll-option" onclick="votePoll(3)">
+                            <div class="poll-bar" id="pollBar3" style="width: 0%"></div>
+                            <div class="poll-text">
+                                <span>Buggy</span>
+                                <span id="pollPercent3">0%</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="sidebar-card glass">
+                    <h3><i class="fas fa-user-friends"></i> Arkadaşlar</h3>
+                    <div id="friendsList">
+                        <p style="opacity: 0.7; font-size: 0.9rem;">Henüz arkadaşınız yok.</p>
+                    </div>
+                    <button class="btn btn-secondary mt-20" style="width: 100%;" onclick="openFriendModal()">
+                        <i class="fas fa-plus"></i> Arkadaş Ekle
+                    </button>
+                </div>
+            </aside>
+
+            <!-- Main Content -->
+            <main class="main-content" id="mainContent">
+                
+                <!-- News Section -->
+                <div id="newsSection" class="content-section">
+                    <!-- Countdowns -->
+                    <div class="content-card glass">
+                        <h2 class="section-title"><i class="fas fa-clock"></i> Geri Sayım</h2>
+                        <div class="countdown-grid">
+                            <div class="countdown-card">
+                                <div class="countdown-title">Manga 1175. Bölüm</div>
+                                <div class="countdown-timer" id="countdown1">00:00:00:00</div>
+                            </div>
+                            <div class="countdown-card">
+                                <div class="countdown-title">One Piece 2. Sezon (Anime)</div>
+                                <div class="countdown-timer" id="countdown2">00:00:00:00</div>
+                            </div>
+                            <div class="countdown-card">
+                                <div class="countdown-title">Live Action 2. Sezon</div>
+                                <div class="countdown-timer" id="countdown3">00:00:00:00</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="content-card glass">
+                        <h2 class="section-title"><i class="fas fa-newspaper"></i> Son Haberler</h2>
+                        <div class="news-grid">
+                            <div class="news-card" onclick="openContentModal('manga')">
+                                <div class="news-image" style="background-image: url('zoro.jpg');"></div>
+                                <div class="news-content">
+                                    <span class="news-tag">Manga</span>
+                                    <h3 class="news-title">Bölüm 1174 ve Büyük Mola</h3>
+                                    <p style="opacity: 0.8; margin-bottom: 10px;">Elbaf Arkı'nın zirvesindeyiz. 1174'ten sonra 3 hafta ara...</p>
+                                    <div class="news-meta">
+                                        <span><i class="far fa-clock"></i> 2 saat önce</span>
+                                        <span><i class="far fa-comment"></i> 128</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="news-card" onclick="openContentModal('anime')">
+                                <div class="news-image" style="background-image: url('robin.jpg');"></div>
+                                <div class="news-content">
+                                    <span class="news-tag" style="background: #4a0080;">Anime</span>
+                                    <h3 class="news-title">Anime & Remake Güncellemesi</h3>
+                                    <p style="opacity: 0.8; margin-bottom: 10px;">Toei Animation Elbaf'a giriş yaptı. Wit Studio sessizliğini koruyor...</p>
+                                    <div class="news-meta">
+                                        <span><i class="far fa-clock"></i> 5 saat önce</span>
+                                        <span><i class="far fa-comment"></i> 85</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="news-card" onclick="openContentModal('liveaction')">
+                                <div class="news-image" style="background-image: url('aokiji.jpg');"></div>
+                                <div class="news-content">
+                                    <span class="news-tag" style="background: #e74c3c;">Live Action</span>
+                                    <h3 class="news-title">Netflix 2. Sezon Onayı</h3>
+                                    <p style="opacity: 0.8; margin-bottom: 10px;">10 Mart 2026'da Loguetown'dan Drum Adası'na...</p>
+                                    <div class="news-meta">
+                                        <span><i class="far fa-clock"></i> 1 gün önce</span>
+                                        <span><i class="far fa-comment"></i> 256</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="content-card glass">
+                        <h2 class="section-title"><i class="fas fa-question-circle"></i> SBS Köşesi</h2>
+                        <p style="margin-bottom: 15px; opacity: 0.9;">Eiichiro Oda'nın okuyucuların sorularını cevapladığı bölümler.</p>
+                        <button class="btn btn-secondary" onclick="openContentModal('sbs')">SBS'leri Oku</button>
+                    </div>
+                </div>
+
+                <!-- Theories Section -->
+                <div id="theoriesSection" class="content-section hidden">
+                    <div class="content-card glass">
+                        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px;">
+                            <h2 class="section-title" style="margin: 0;"><i class="fas fa-lightbulb"></i> Teoriler</h2>
+                            <button class="btn btn-primary" onclick="openTheoryModal()">
+                                <i class="fas fa-plus"></i> Teori Paylaş
+                            </button>
+                        </div>
+                        <div id="theoriesList">
+                            <!-- Theories will be loaded here -->
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Games Section (Sadece Quiz) -->
+                <div id="gamesSection" class="content-section hidden">
+                    <div class="content-card glass">
+                        <h2 class="section-title"><i class="fas fa-brain"></i> One Piece Bilgi Yarışması</h2>
+                        <div class="game-container">
+                            <div id="quizContainer" class="quiz-container">
+                                <div class="quiz-question" id="quizQuestion">Yarışmayı başlatmak için butona tıklayın!</div>
+                                <div class="quiz-options" id="quizOptions">
+                                    <button class="btn btn-primary" onclick="startQuiz()" style="width: 100%;">Başlat</button>
+                                </div>
+                                <div id="quizScore" style="margin-top: 20px; text-align: center; font-size: 1.2rem;"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Alliances Section -->
+                <div id="alliancesSection" class="content-section hidden">
+                    <div class="content-card glass">
+                        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px;">
+                            <h2 class="section-title" style="margin: 0;"><i class="fas fa-users"></i> İttifaklar</h2>
+                            <button class="btn btn-primary" onclick="openCreateAllianceModal()">
+                                <i class="fas fa-plus"></i> İttifak Kur
+                            </button>
+                        </div>
+                        <div class="tabs">
+                            <button class="tab active" onclick="switchAllianceTab('all')">Tümü</button>
+                            <button class="tab" onclick="switchAllianceTab('my')">Benim İttifakım</button>
+                        </div>
+                        <div id="allianceList" class="alliance-grid">
+                            <!-- Alliances will be loaded here -->
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Leaderboard Section -->
+                <div id="leaderboardSection" class="content-section hidden">
+                    <div class="content-card glass">
+                        <h2 class="section-title"><i class="fas fa-trophy"></i> Liderlik Tabloları</h2>
+                        <div class="tabs">
+                            <button class="tab active" onclick="switchLeaderboard('pirates')">Korsanlar</button>
+                            <button class="tab" onclick="switchLeaderboard('alliances')">İttifaklar</button>
+                        </div>
+                        <div id="leaderboardContent">
+                            <!-- Leaderboard will be loaded here -->
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Chat Section -->
+                <div id="chatSection" class="content-section hidden">
+                    <div class="content-card glass" style="height: 600px;">
+                        <h2 class="section-title"><i class="fas fa-comments"></i> Genel Sohbet</h2>
+                        <div class="chat-container" id="chatContainer">
+                            <div class="chat-messages" id="chatMessages">
+                                <!-- Messages will be loaded here -->
+                            </div>
+                            <div class="chat-input-area">
+                                <input type="text" class="chat-input" id="chatInput" placeholder="Mesajınızı yazın..." maxlength="200">
+                                <button class="btn btn-primary" onclick="sendMessage()">
+                                    <i class="fas fa-paper-plane"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </main>
+
+            <!-- Right Sidebar -->
+            <aside class="sidebar">
+                <div class="sidebar-card glass">
+                    <h3><i class="fas fa-trophy"></i> Top 5 Korsan</h3>
+                    <div id="topPirates">
+                        <!-- Will be populated -->
+                    </div>
+                </div>
+
+                <div class="sidebar-card glass">
+                    <h3><i class="fas fa-fire"></i> Popüler Etiketler</h3>
+                    <div style="display: flex; flex-wrap: wrap; gap: 8px; margin-top: 10px;">
+                        <span style="background: rgba(212,175,55,0.2); padding: 5px 12px; border-radius: 15px; font-size: 0.85rem;">#Elbaf</span>
+                        <span style="background: rgba(212,175,55,0.2); padding: 5px 12px; border-radius: 15px; font-size: 0.85rem;">#Imu</span>
+                        <span style="background: rgba(212,175,55,0.2); padding: 5px 12px; border-radius: 15px; font-size: 0.85rem;">#JoyBoy</span>
+                        <span style="background: rgba(212,175,55,0.2); padding: 5px 12px; border-radius: 15px; font-size: 0.85rem;">#OnePiece</span>
+                        <span style="background: rgba(212,175,55,0.2); padding: 5px 12px; border-radius: 15px; font-size: 0.85rem;">#LiveAction</span>
+                    </div>
+                </div>
+            </aside>
+        </div>
+    </div>
+
+    <!-- Auth Modal -->
+    <div class="modal-overlay" id="authModal">
+        <div class="modal">
+            <div class="modal-header">
+                <h2 class="modal-title">Hoş Geldiniz</h2>
+                <button class="modal-close" onclick="closeModal('authModal')"><i class="fas fa-times"></i></button>
+            </div>
+            <div class="modal-body">
+                <div class="auth-tabs">
+                    <button class="auth-tab active" onclick="switchAuthTab('login')">Giriş Yap</button>
+                    <button class="auth-tab" onclick="switchAuthTab('register')">Kayıt Ol</button>
+                </div>
+                
+                <form id="loginForm" class="auth-form active" onsubmit="handleLogin(event)">
+                    <div class="form-group">
+                        <label class="form-label">Kullanıcı Adı</label>
+                        <input type="text" class="form-input" id="loginUsername" required>
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label">Şifre</label>
+                        <input type="password" class="form-input" id="loginPassword" required>
+                    </div>
+                    <div id="loginError" class="error-message hidden"></div>
+                    <button type="submit" class="btn btn-primary" style="width: 100%;" id="loginBtn">Giriş Yap</button>
+                </form>
+
+                <form id="registerForm" class="auth-form" onsubmit="handleRegister(event)">
+                    <div class="form-group">
+                        <label class="form-label">Kullanıcı Adı</label>
+                        <input type="text" class="form-input" id="regUsername" required maxlength="20">
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label">E-posta</label>
+                        <input type="email" class="form-input" id="regEmail" required>
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label">Şifre</label>
+                        <input type="password" class="form-input" id="regPassword" required minlength="6">
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label">Profil Fotoğrafı (İsteğe Bağlı)</label>
+                        <div class="file-input-wrapper">
+                            <input type="file" id="regAvatar" accept="image/*" onchange="previewImage(this)">
+                            <label for="regAvatar" class="file-input-label">
+                                <i class="fas fa-camera"></i> Fotoğraf Seç
+                            </label>
+                        </div>
+                        <img id="avatarPreview" class="preview-image">
+                    </div>
+                    <div id="registerError" class="error-message hidden"></div>
+                    <button type="submit" class="btn btn-primary" style="width: 100%;" id="registerBtn">Kayıt Ol</button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- Profile Modal -->
+    <div class="modal-overlay" id="profileModal">
+        <div class="modal" style="max-width: 600px;">
+            <div class="modal-header">
+                <h2 class="modal-title">Profil</h2>
+                <button class="modal-close" onclick="closeModal('profileModal')"><i class="fas fa-times"></i></button>
+            </div>
+            <div class="modal-body">
+                <div class="profile-header">
+                    <img id="profileAvatar" src="" class="profile-avatar-large">
+                    <div class="profile-name" id="profileName">Kullanıcı</div>
+                    <div class="bounty-display" id="profileBounty">₿ 0</div>
+                    <div class="profile-bio" id="profileBio">Henüz biyografi eklenmemiş.</div>
+                    <button class="btn btn-secondary mt-20" id="editProfileBtn" onclick="toggleEditProfile()" style="display: none;">
+                        <i class="fas fa-edit"></i> Profili Düzenle
+                    </button>
+                </div>
+                
+                <div id="editProfileForm" class="edit-form hidden">
+                    <h3 style="margin-bottom: 15px; color: var(--primary);">Profili Düzenle</h3>
+                    <div class="form-group">
+                        <label class="form-label">Profil Fotoğrafı</label>
+                        <div class="file-input-wrapper">
+                            <input type="file" id="editAvatar" accept="image/*" onchange="previewEditImage(this)">
+                            <label for="editAvatar" class="file-input-label">
+                                <i class="fas fa-camera"></i> Yeni Fotoğraf Seç
+                            </label>
+                        </div>
+                        <img id="editAvatarPreview" class="preview-image">
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label">Biyografi</label>
+                        <textarea class="form-input" id="editBio" placeholder="Kendinizden bahsedin..." maxlength="200"></textarea>
+                    </div>
+                    <div style="display: flex; gap: 10px;">
+                        <button class="btn btn-primary" onclick="saveProfileEdit()" style="flex: 1;">Kaydet</button>
+                        <button class="btn btn-secondary" onclick="toggleEditProfile()" style="flex: 1;">İptal</button>
+                    </div>
+                </div>
+                
+                <div class="tabs">
+                    <button class="tab active" onclick="switchProfileTab('stats')">İstatistikler</button>
+                    <button class="tab" onclick="switchProfileTab('saved')">Kaydettiklerim</button>
+                    <button class="tab" onclick="switchProfileTab('requests')" id="requestsTabBtn">İstekler</button>
+                </div>
+
+                <div id="profileStats" class="tab-content active">
+                    <div class="profile-stats">
+                        <div class="stat-box">
+                            <div class="stat-value" id="statTheories">0</div>
+                            <div class="stat-label">Teori</div>
+                        </div>
+                        <div class="stat-box">
+                            <div class="stat-value" id="statLikes">0</div>
+                            <div class="stat-label">Beğeni</div>
+                        </div>
+                        <div class="stat-box">
+                            <div class="stat-value" id="statFriends">0</div>
+                            <div class="stat-label">Arkadaş</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div id="profileSaved" class="tab-content">
+                    <div id="savedTheoriesList">
+                        <p style="text-align: center; opacity: 0.7;">Henüz kaydedilmiş teori yok.</p>
+                    </div>
+                </div>
+
+                <div id="profileRequests" class="tab-content">
+                    <div id="friendRequestsList">
+                        <p style="text-align: center; opacity: 0.7;">Bekleyen istek yok.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Content Modals -->
+    <div class="modal-overlay" id="contentModal">
+        <div class="modal" style="max-width: 800px; max-height: 90vh;">
+            <div class="modal-header">
+                <h2 class="modal-title" id="contentModalTitle">İçerik</h2>
+                <button class="modal-close" onclick="closeModal('contentModal')"><i class="fas fa-times"></i></button>
+            </div>
+            <div class="modal-body">
+                <div class="content-text" id="contentModalBody">
+                    <!-- Content will be loaded here -->
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Friend Request Modal -->
+    <div class="modal-overlay" id="friendModal">
+        <div class="modal">
+            <div class="modal-header">
+                <h2 class="modal-title">Arkadaş Ekle</h2>
+                <button class="modal-close" onclick="closeModal('friendModal')"><i class="fas fa-times"></i></button>
+            </div>
+            <div class="modal-body">
+                <div class="form-group">
+                    <label class="form-label">Kullanıcı Adı</label>
+                    <input type="text" class="form-input" id="friendUsername" placeholder="Kullanıcı adı girin...">
+                </div>
+                <button class="btn btn-primary" style="width: 100%;" onclick="sendFriendRequest()">
+                    İstek Gönder
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Alliance Create Modal -->
+    <div class="modal-overlay" id="createAllianceModal">
+        <div class="modal">
+            <div class="modal-header">
+                <h2 class="modal-title">İttifak Kur</h2>
+                <button class="modal-close" onclick="closeModal('createAllianceModal')"><i class="fas fa-times"></i></button>
+            </div>
+            <div class="modal-body">
+                <div class="form-group">
+                    <label class="form-label">İttifak Adı</label>
+                    <input type="text" class="form-input" id="allianceName" required>
+                </div>
+                <div class="form-group">
+                    <label class="form-label">Bayrak</label>
+                    <div class="file-input-wrapper">
+                        <input type="file" id="allianceFlag" accept="image/*" onchange="previewAllianceFlag(this)">
+                        <label for="allianceFlag" class="file-input-label">
+                            <i class="fas fa-flag"></i> Bayrak Seç
+                        </label>
+                    </div>
+                    <img id="allianceFlagPreview" class="preview-image" style="border-radius: 8px;">
+                </div>
+                <button class="btn btn-primary" style="width: 100%;" onclick="createAlliance()">
+                    İttifak Kur (1000 ₿)
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Alliance Detail Modal -->
+    <div class="modal-overlay" id="allianceDetailModal">
+        <div class="modal" style="max-width: 600px;">
+            <div class="modal-header">
+                <h2 class="modal-title" id="allianceDetailName">İttifak</h2>
+                <button class="modal-close" onclick="closeModal('allianceDetailModal')"><i class="fas fa-times"></i></button>
+            </div>
+            <div class="modal-body">
+                <div style="text-align: center; margin-bottom: 20px;">
+                    <img id="allianceDetailFlag" src="" style="width: 100px; height: 100px; border-radius: 50%; border: 3px solid var(--primary);">
+                </div>
+                <div class="member-list" id="allianceMembers">
+                    <!-- Members will be loaded here -->
+                </div>
+                <div id="allianceActions" style="margin-top: 20px; text-align: center;">
+                    <!-- Actions will be loaded here -->
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Toast -->
+    <div class="toast" id="toast"></div>
+
+    <!-- Firebase Scripts -->
+    <script type="module">
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-app.js";
+        import { 
+            getFirestore, 
+            collection, 
+            doc, 
+            setDoc, 
+            getDoc, 
+            updateDoc, 
+            arrayUnion, 
+            arrayRemove, 
+            addDoc, 
+            onSnapshot, 
+            query, 
+            orderBy, 
+            limit, 
+            serverTimestamp, 
+            runTransaction,
+            where,
+            getDocs
+        } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-firestore.js";
+
+        const firebaseConfig = {
+            apiKey: "AIzaSyAYQ1FVg9YwQTb8kuWIfg9KHiUIHBbkpqY",
+            authDomain: "one-piece-haber.firebaseapp.com",
+            projectId: "one-piece-haber",
+            storageBucket: "one-piece-haber.firebasestorage.app",
+            messagingSenderId: "292653018558",
+            appId: "1:292653018558:web:e275236747771db3329def",
+            measurementId: "G-G4NTRHD0YH"
+        };
+
+        const app = initializeApp(firebaseConfig);
+        const db = getFirestore(app);
+
+        // Global State
+        window.currentUser = null;
+        window.db = db;
+        window.app = app;
+
+        // Make Firebase functions available globally
+        window.firebaseCollection = collection;
+        window.firebaseDoc = doc;
+        window.firebaseSetDoc = setDoc;
+        window.firebaseGetDoc = getDoc;
+        window.firebaseUpdateDoc = updateDoc;
+        window.firebaseArrayUnion = arrayUnion;
+        window.firebaseArrayRemove = arrayRemove;
+        window.firebaseAddDoc = addDoc;
+        window.firebaseOnSnapshot = onSnapshot;
+        window.firebaseQuery = query;
+        window.firebaseOrderBy = orderBy;
+        window.firebaseLimit = limit;
+        window.firebaseServerTimestamp = serverTimestamp;
+        window.firebaseRunTransaction = runTransaction;
+        window.firebaseWhere = where;
+        window.firebaseGetDocs = getDocs;
+
+        // Check auth state on load
+        const initAuth = () => {
+            const userId = localStorage.getItem('onepiece_user_id');
+            if (userId) {
+                getDoc(doc(db, 'users', userId)).then(userDoc => {
+                    if (userDoc.exists()) {
+                        window.currentUser = { id: userId, ...userDoc.data() };
+                        updateUIForUser();
+                    }
+                });
+            }
+        };
+
+        window.initAuth = initAuth;
+    </script>
+
+    <script>
+        // Content Data
+        const contentData = {
+            sbs: `<h2>Bölüm 27, Sayfa 28</h2><p><strong>O:</strong> Şimdi Cilt 2'de açıklanan SBS köşesiyle ilgili. Mektuplar için teşekkürler.</p><p><strong>D:</strong> Kaç yaşındayız Luffy, Zoro, Nami ve Shanks?</p><p><strong>O:</strong> Luffy 17, Zoro 19, Nami 18. Shanks 10 yıl önce 27 yaşındaydı. Usopp da 17.</p><p><strong>D:</strong> Neden kötü adamlar yarım yamalak?</p><p><strong>O:</strong> Bu kabataslaklık bir gizem ve çekicilik katıyor.</p><p><strong>D:</strong> Kollarınız uzuyor mu?</p><p><strong>O:</strong> Vay! Bu bir sır.</p><hr><h2>Bölüm 28</h2><p><strong>D:</strong> Hayran hediyelerini ne yapıyorsunuz?</p><p><strong>O:</strong> Hepsini odamda saklıyorum ve okuyorum. Enerji kaynağım onlar.</p><p><strong>D:</strong> Zoro'nun ismi?</p><p><strong>O:</strong> François l'Olonnais'ten geliyor. Morgan ve Alvida da gerçek korsanlardır.</p><p><strong>D:</strong> Buggy'nin saçı gerçek mi?</p><p><strong>O:</strong> Evet, şapkasından çıkanlar gerçek saçı.</p><hr><h2>Bölüm 29-30</h2><p><strong>D:</strong> Luffy'nin gerilim duygusu yok mu?</p><p><strong>O:</strong> Çünkü o tam bir aptal. Huhuhu.</p><p><strong>D:</strong> Sizin hazineniz ne?</p><p><strong>O:</strong> Benim hazinem SİZLERSİNİZ!</p><p><strong>D:</strong> Luffy neden öldürmüyor?</p><p><strong>O:</strong> İnançlarını yıkmak, onlar için ölümden beterdir.</p><hr><h2>Bölüm 31</h2><p><strong>D:</strong> Nami'nin ölçüleri?</p><p><strong>O:</strong> Gidip ölçeyim... *POW* (Dayak yer). Nami: Paran yoksa konuşma!</p><hr><h2>Bölüm 32-33</h2><p><strong>D:</strong> Zoro neden haramaki giyiyor?</p><p><strong>O:</strong> O Japonya'nın en güçlü giysisidir!</p><p><strong>D:</strong> Mikio Itoo kim?</p><p><strong>O:</strong> Diğer mangalarımda da olan bir gezgin.</p><p><strong>D:</strong> Mangaka olmaya ne zaman karar verdin?</p><p><strong>O:</strong> 4 yaşında. Çalışmak istemediğim için.</p><p><strong>D:</strong> Kaç şeytan meyvesi var?</p><p><strong>O:</strong> 100'den fazla olduğu söyleniyor.</p><hr><h2>Bölüm 34</h2><p><strong>Usopp Galeri:</strong> İllüstrasyonlarınızı bekliyoruz!</p>`,
+            
+            manga: `<h2>🚨 Önemliler (En Sıcak Gelişmeler)</h2><h3>1. Manga: Bölüm 1174 ve "Büyük Mola"</h3><p><strong>Güncel Durum:</strong> Manga şu an Elbaf Arkı'nın zirvesinde. İnternetteki son raporlara göre 1174. Bölüm'ün yarın yayınlanması bekleniyor.</p><p><strong>Kötü Haber (Ara):</strong> 1174. bölümden sonra Eiichiro Oda'nın klasik "3 bölüm çiz, 1 hafta ara ver" rutini devreye girecek.</p><p><strong>Dönüş:</strong> Seri, 1 Mart 2026'da 1175. Bölüm ile geri dönecek.</p><p><strong>Büyük Olay:</strong> İnternetteki sızıntılar ve tartışmalar, 1175. bölümün serinin en büyük savaşlarından birine, Luffy vs. Imu karşılaşmasına sahne olacağını işaret ediyor.</p><h3>2. Live Action (2. Sezon): Tarih Kesinleşti!</h3><p><strong>Yayın Tarihi:</strong> Netflix, One Piece Live Action 2. Sezon'un 10 Mart 2026'da yayınlanacağını doğruladı.</p><p><strong>Kapsam:</strong> Bu sezon Loguetown ile başlayıp, Drum Adası'na kadar gidecek.</p><p><strong>Kadro:</strong> Smoker ve Tashigi fragmanlarda göründü. Chopper'ın görünümü büyük merak konusu.</p>`,
+            
+            anime: `<h2>Anime & Remake Güncellemesi</h2><p><strong>Mevcut Anime (Toei Animation):</strong> Orijinal anime serisi de manga ile paralel olarak Elbaf dönemine giriş yapmış durumda. Ancak manga şu an çok kritik bir savaşta olduğu için tüm gözler okuyucularda.</p><p><strong>Wit Studio Remake:</strong> Sessizlik sürüyor. Jump Festa 2026'da beklenen fragman gelmedi. Proje "yapım aşamasında" denilerek geçiştirildi.</p>`
+        };
+
+        // Quiz Questions (Geniş Havuz)
+        const quizQuestions = [
+            { q: "Luffy'nin ilk kez kullandığı Gear hangisidir?", options: ["Gear 2", "Gear 3", "Gear 4", "Gear 5"], correct: 0 },
+            { q: "Zoro'nun en büyük hayali nedir?", options: ["Dünyanın en zengini olmak", "Dünyanın en iyi kılıç ustası olmak", "One Piece'i bulmak", "Korsan Kralı olmak"], correct: 1 },
+            { q: "Gol D. Roger'ın idam edildiği yer neresi?", options: ["Marineford", "Loguetown", "Water 7", "Dressrosa"], correct: 1 },
+            { q: "Ace hangi korsan tayfasındaydı?", options: ["Akainu", "Beyaz Sakal", "Shanks", "Kaido"], correct: 1 },
+            { q: "Nami'nin hayali nedir?", options: ["Dünyanın haritasını çizmek", "Zengin olmak", "Hava durumu tahmini yapmak", "Denizci olmak"], correct: 0 },
+            { q: "Sanji hangi ailedendir?", options: ["Charlotte", "Vinsmoke", "Donquixote", "Nefertari"], correct: 1 },
+            { q: "One Piece dünyasında kaç deniz vardır?", options: ["2", "3", "4", "5"], correct: 2 },
+            { q: "Mihawk'ın lakabı nedir?", options: ["Kara Bıçak", "Gözleri Kapalı", "Şahin Göz", "Dünyanın En İyi Kılıç Ustası"], correct: 3 },
+            { q: "Chopper'ın meyvesi hangisidir?", options: ["Hito Hito", "Uma Uma", "Inu Inu", "Tori Tori"], correct: 0 },
+            { q: "Robin'in hayali nedir?", options: ["True History öğrenmek", "Zengin olmak", "Korsan olmak", "Adalet sağlamak"], correct: 0 },
+            { q: "Franky'nin vücudu neyden yapılmıştır?", options: ["Çelik", "Titanyum", "Wapometal", "Altın"], correct: 2 },
+            { q: "Brook'un meyvesi hangisidir?", options: ["Yomi Yomi", "Goro Goro", "Pika Pika", "Mera Mera"], correct: 0 },
+            { q: "Jinbe hangi ırktandır?", options: ["İnsan", "Balık İnsan", "Dev", "Mink"], correct: 1 },
+            { q: "Kaido'nun meyvesi hangisidir?", options: ["Uo Uo", "Tori Tori", "Ryu Ryu", "Zou Zou"], correct: 0 },
+            { q: "Big Mom'un gerçek adı nedir?", options: ["Charlotte Linlin", "Charlotte Smoothie", "Charlotte Katakuri", "Charlotte Pudding"], correct: 0 },
+            { q: "Shanks'un kılıcı hangisidir?", options: ["Gryphon", "Ace", "Yoru", "Shusui"], correct: 0 },
+            { q: "Buggy'nin meyvesi hangisidir?", options: ["Bara Bara", "Suke Suke", "Bomu Bomu", "Kilo Kilo"], correct: 0 },
+            { q: "Drum Adası'nın eski kralı kimdir?", options: ["Wapol", "Dalton", "Kureha", "Chopper"], correct: 0 },
+            { q: "Alabasta'nın prensesi kimdir?", options: ["Vivi", "Rebecca", "Shirahoshi", "Mansherry"], correct: 0 },
+            { q: "Enies Lobby'de Robin'i kurtarmak için kaç numara giydiler?", options: ["1", "2", "3", "4"], correct: 1 },
+            { q: "Luffy'nin babası kimdir?", options: ["Dragon", "Garp", "Roger", "Shanks"], correct: 0 },
+            { q: "Zoro'nun üç kılıç tekniğinin adı nedir?", options: ["Santoryu", "Nitoryu", "Ittoryu", "Kyutoryu"], correct: 0 },
+            { q: "Sanji'nin ailesinde kaç kardeş vardır?", options: ["3", "4", "5", "6"], correct: 2 },
+            { q: "One Piece'in yaratıcısı kimdir?", options: ["Eiichiro Oda", "Akira Toriyama", "Masashi Kishimoto", "Tite Kubo"], correct: 0 },
+            { q: "Straw Hat'lerin ilk gemisinin adı nedir?", options: ["Going Merry", "Thousand Sunny", "Oro Jackson", "Red Force"], correct: 0 }
+        ];
+
+        // Initialize
+        document.addEventListener('DOMContentLoaded', () => {
+            loadPollData();
+            loadChatMessages();
+            loadTheories();
+            loadAlliances();
+            loadLeaderboard();
+            startCountdowns();
+            
+            // Check existing auth
+            setTimeout(() => {
+                if (window.initAuth) window.initAuth();
+            }, 500);
+        });
+
+        // Countdown Functions
+        function startCountdowns() {
+            const mangaDate = new Date('2026-03-01T00:00:00').getTime();
+            const animeDate = new Date('2026-04-01T00:00:00').getTime();
+            const liveActionDate = new Date('2026-03-10T00:00:00').getTime();
+
+            setInterval(() => {
+                const now = new Date().getTime();
+                updateCountdown('countdown1', mangaDate - now);
+                updateCountdown('countdown2', animeDate - now);
+                updateCountdown('countdown3', liveActionDate - now);
+            }, 1000);
+        }
+
+        function updateCountdown(elementId, distance) {
+            if (distance < 0) {
+                document.getElementById(elementId).textContent = "Yayınlandı!";
+                return;
+            }
+            const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+            const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+            const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+            document.getElementById(elementId).textContent = `${days}g ${hours}s ${minutes}d ${seconds}sn`;
+        }
+
+        // UI Functions
+        function showSection(section) {
+            document.querySelectorAll('.content-section').forEach(s => s.classList.add('hidden'));
+            document.getElementById(section + 'Section').classList.remove('hidden');
+            if (section === 'chat') {
+                setTimeout(() => {
+                    const container = document.getElementById('chatMessages');
+                    container.scrollTop = container.scrollHeight;
+                }, 100);
+            }
+        }
+
+        function updateUIForUser() {
+            if (!window.currentUser) return;
+            document.getElementById('heroSection').style.display = 'none';
+            document.getElementById('mainGrid').style.display = 'grid';
+            document.getElementById('userSection').innerHTML = `
+                <div class="bounty-display">₿ ${window.currentUser.bounty || 0}</div>
+                <img src="${window.currentUser.avatar || 'https://via.placeholder.com/40'}" class="user-avatar" onclick="openProfileModal('${window.currentUser.id}')">
+                <button class="btn btn-secondary" onclick="logout()">Çıkış</button>
+            `;
+            loadUserFriends();
+            loadFriendRequests();
+        }
+
+        // Auth Functions
+        function openAuthModal() {
+            document.getElementById('authModal').classList.add('active');
+            document.getElementById('loginError').classList.add('hidden');
+            document.getElementById('registerError').classList.add('hidden');
+        }
+
+        function closeModal(modalId) {
+            document.getElementById(modalId).classList.remove('active');
+        }
+
+        function switchAuthTab(tab) {
+            document.querySelectorAll('.auth-tab').forEach(t => t.classList.remove('active'));
+            document.querySelectorAll('.auth-form').forEach(f => f.classList.remove('active'));
+            event.target.classList.add('active');
+            document.getElementById(tab + 'Form').classList.add('active');
+            document.getElementById('loginError').classList.add('hidden');
+            document.getElementById('registerError').classList.add('hidden');
+        }
+
+        function previewImage(input) {
+            if (input.files && input.files[0]) {
+                const reader = new FileReader();
+                reader.onload = function(e) {
+                    document.getElementById('avatarPreview').src = e.target.result;
+                    document.getElementById('avatarPreview').classList.add('active');
+                };
+                reader.readAsDataURL(input.files[0]);
+            }
+        }
+
+        // Login with username/email and password
+        async function handleLogin(e) {
+            e.preventDefault();
+            const btn = document.getElementById('loginBtn');
+            const errorDiv = document.getElementById('loginError');
+            const usernameOrEmail = document.getElementById('loginUsername').value.trim();
+            const password = document.getElementById('loginPassword').value;
+            
+            btn.disabled = true;
+            btn.textContent = 'Giriş yapılıyor...';
+            errorDiv.classList.add('hidden');
+            
+            try {
+                // Try to find user by username or email
+                const usersRef = window.firebaseCollection(window.db, 'users');
+                let q;
+                
+                // Check if input looks like email
+                if (usernameOrEmail.includes('@')) {
+                    q = window.firebaseQuery(usersRef, window.firebaseWhere('email', '==', usernameOrEmail));
+                } else {
+                    q = window.firebaseQuery(usersRef, window.firebaseWhere('username', '==', usernameOrEmail));
+                }
+                
+                const snapshot = await window.firebaseGetDocs(q);
+                
+                if (snapshot.empty) {
+                    throw new Error('Kullanıcı bulunamadı');
+                }
+                
+                const userDoc = snapshot.docs[0];
+                const userData = userDoc.data();
+                
+                // Check password
+                if (userData.password !== password) {
+                    throw new Error('Şifre hatalı');
+                }
+                
+                // Login successful
+                window.currentUser = { id: userDoc.id, ...userData };
+                localStorage.setItem('onepiece_user_id', userDoc.id);
+                
+                showToast('Giriş başarılı!');
+                closeModal('authModal');
+                document.getElementById('loginForm').reset();
+                updateUIForUser();
+                
+            } catch (error) {
+                errorDiv.textContent = error.message || 'Giriş başarısız';
+                errorDiv.classList.remove('hidden');
+            } finally {
+                btn.disabled = false;
+                btn.textContent = 'Giriş Yap';
+            }
+        }
+
+        // Register new user
+        async function handleRegister(e) {
+            e.preventDefault();
+            const btn = document.getElementById('registerBtn');
+            const errorDiv = document.getElementById('registerError');
+            const username = document.getElementById('regUsername').value.trim();
+            const email = document.getElementById('regEmail').value.trim();
+            const password = document.getElementById('regPassword').value;
+            const avatarFile = document.getElementById('regAvatar').files[0];
+            
+            btn.disabled = true;
+            btn.textContent = 'Kayıt yapılıyor...';
+            errorDiv.classList.add('hidden');
+            
+            try {
+                // Validate inputs
+                if (username.length < 3) {
+                    throw new Error('Kullanıcı adı en az 3 karakter olmalı');
+                }
+                if (password.length < 6) {
+                    throw new Error('Şifre en az 6 karakter olmalı');
+                }
+                
+                // Check if username exists
+                const usersRef = window.firebaseCollection(window.db, 'users');
+                const usernameQuery = window.firebaseQuery(usersRef, window.firebaseWhere('username', '==', username));
+                const usernameSnapshot = await window.firebaseGetDocs(usernameQuery);
+                
+                if (!usernameSnapshot.empty) {
+                    throw new Error('Bu kullanıcı adı zaten alınmış');
+                }
+                
+                // Check if email exists
+                const emailQuery = window.firebaseQuery(usersRef, window.firebaseWhere('email', '==', email));
+                const emailSnapshot = await window.firebaseGetDocs(emailQuery);
+                
+                if (!emailSnapshot.empty) {
+                    throw new Error('Bu e-posta adresi zaten kayıtlı');
+                }
+                
+                // Process avatar
+                let avatarBase64 = 'https://via.placeholder.com/150';
+                if (avatarFile) {
+                    avatarBase64 = await new Promise((resolve) => {
+                        const reader = new FileReader();
+                        reader.onload = (e) => resolve(e.target.result);
+                        reader.readAsDataURL(avatarFile);
+                    });
+                }
+                
+                // Create user document with auto-generated ID
+                const userData = {
+                    username,
+                    email,
+                    password, // In production, this should be hashed!
+                    avatar: avatarBase64,
+                    bounty: 1000,
+                    bio: '',
+                    createdAt: new Date().toISOString(),
+                    friends: [],
+                    friendRequests: [],
+                    savedTheories: [],
+                    likedTheories: [],
+                    dislikedTheories: [],
+                    theories: 0,
+                    totalLikes: 0
+                };
+                
+                const docRef = await window.firebaseAddDoc(usersRef, userData);
+                
+                // Auto login
+                window.currentUser = { id: docRef.id, ...userData };
+                localStorage.setItem('onepiece_user_id', docRef.id);
+                
+                showToast('Kayıt başarılı! 1000 Bounty kazandınız!');
+                closeModal('authModal');
+                document.getElementById('registerForm').reset();
+                document.getElementById('avatarPreview').classList.remove('active');
+                updateUIForUser();
+                
+            } catch (error) {
+                errorDiv.textContent = error.message || 'Kayıt başarısız';
+                errorDiv.classList.remove('hidden');
+            } finally {
+                btn.disabled = false;
+                btn.textContent = 'Kayıt Ol';
+            }
+        }
+
+        function logout() {
+            window.currentUser = null;
+            localStorage.removeItem('onepiece_user_id');
+            location.reload();
+        }
+
+        // Profile Functions
+        async function openProfileModal(userId) {
+            if (!userId && window.currentUser) userId = window.currentUser.id;
+            if (!userId) {
+                openAuthModal();
+                return;
+            }
+            
+            try {
+                const userDoc = await window.firebaseGetDoc(window.firebaseDoc(window.db, 'users', userId));
+                if (!userDoc.exists()) return;
+                
+                const userData = userDoc.data();
+                document.getElementById('profileAvatar').src = userData.avatar || 'https://via.placeholder.com/150';
+                document.getElementById('profileName').textContent = userData.username;
+                document.getElementById('profileBounty').textContent = `₿ ${userData.bounty || 0}`;
+                document.getElementById('profileBio').textContent = userData.bio || 'Henüz biyografi eklenmemiş.';
+                
+                document.getElementById('statTheories').textContent = userData.theories || 0;
+                document.getElementById('statLikes').textContent = userData.totalLikes || 0;
+                document.getElementById('statFriends').textContent = (userData.friends || []).length;
+                
+                const isOwnProfile = userId === window.currentUser?.id;
+                document.getElementById('editProfileBtn').style.display = isOwnProfile ? 'inline-block' : 'none';
+                
+                const savedList = document.getElementById('savedTheoriesList');
+                if (userData.savedTheories && userData.savedTheories.length > 0) {
+                    const theoriesHtml = await Promise.all(userData.savedTheories.map(async (theoryId) => {
+                        const theoryDoc = await window.firebaseGetDoc(window.firebaseDoc(window.db, 'theories', theoryId));
+                        if (theoryDoc.exists()) {
+                            const t = theoryDoc.data();
+                            return `
+                                <div class="saved-theory-card" onclick="viewTheory('${theoryId}')">
+                                    <div class="saved-theory-title">${t.authorName} - Teori</div>
+                                    <div class="saved-theory-excerpt">${t.content}</div>
+                                </div>
+                            `;
+                        }
+                        return '';
+                    }));
+                    savedList.innerHTML = theoriesHtml.join('') || '<p style="text-align: center; opacity: 0.7;">Henüz kaydedilmiş teori yok.</p>';
+                } else {
+                    savedList.innerHTML = '<p style="text-align: center; opacity: 0.7;">Henüz kaydedilmiş teori yok.</p>';
+                }
+                
+                document.getElementById('requestsTabBtn').style.display = isOwnProfile ? 'block' : 'none';
+                
+                if (isOwnProfile) {
+                    loadFriendRequests();
+                }
+                
+                document.getElementById('profileModal').classList.add('active');
+            } catch (error) {
+                showToast('Profil yüklenirken hata oluştu');
+            }
+        }
+
+        function toggleEditProfile() {
+            const form = document.getElementById('editProfileForm');
+            form.classList.toggle('hidden');
+            if (!form.classList.contains('hidden')) {
+                document.getElementById('editBio').value = window.currentUser.bio || '';
+            }
+        }
+
+        function previewEditImage(input) {
+            if (input.files && input.files[0]) {
+                const reader = new FileReader();
+                reader.onload = function(e) {
+                    document.getElementById('editAvatarPreview').src = e.target.result;
+                    document.getElementById('editAvatarPreview').classList.add('active');
+                };
+                reader.readAsDataURL(input.files[0]);
+            }
+        }
+
+        async function saveProfileEdit() {
+            const bio = document.getElementById('editBio').value;
+            const avatarFile = document.getElementById('editAvatar').files[0];
+            
+            try {
+                let updates = { bio };
+                
+                if (avatarFile) {
+                    const avatarBase64 = await new Promise((resolve) => {
+                        const reader = new FileReader();
+                        reader.onload = (e) => resolve(e.target.result);
+                        reader.readAsDataURL(avatarFile);
+                    });
+                    updates.avatar = avatarBase64;
+                }
+                
+                await window.firebaseUpdateDoc(window.firebaseDoc(window.db, 'users', window.currentUser.id), updates);
+                window.currentUser = { ...window.currentUser, ...updates };
+                showToast('Profil güncellendi!');
+                toggleEditProfile();
+                openProfileModal(window.currentUser.id);
+                updateUIForUser();
+            } catch (error) {
+                showToast('Hata: ' + error.message);
+            }
+        }
+
+        function switchProfileTab(tab) {
+            document.querySelectorAll('#profileModal .tab').forEach(t => t.classList.remove('active'));
+            document.querySelectorAll('#profileModal .tab-content').forEach(c => c.classList.remove('active'));
+            event.target.classList.add('active');
+            document.getElementById('profile' + tab.charAt(0).toUpperCase() + tab.slice(1)).classList.add('active');
+        }
+
+        function viewTheory(theoryId) {
+            showSection('theories');
+            closeModal('profileModal');
+        }
+
+        // Friend Functions
+        function openFriendModal() {
+            if (!window.currentUser) {
+                openAuthModal();
+                return;
+            }
+            document.getElementById('friendModal').classList.add('active');
+        }
+
+        async function sendFriendRequest() {
+            const username = document.getElementById('friendUsername').value.trim();
+            if (!username) return;
+            
+            if (username === window.currentUser.username) {
+                showToast('Kendinize istek gönderemezsiniz!');
+                return;
+            }
+            
+            try {
+                const usersRef = window.firebaseCollection(window.db, 'users');
+                const q = window.firebaseQuery(usersRef, window.firebaseWhere('username', '==', username));
+                const snapshot = await window.firebaseGetDocs(q);
+                
+                if (snapshot.empty) {
+                    showToast('Kullanıcı bulunamadı!');
+                    return;
+                }
+                
+                const targetUser = snapshot.docs[0];
+                const targetData = targetUser.data();
+                
+                if (targetData.friends?.includes(window.currentUser.id)) {
+                    showToast('Bu kullanıcı zaten arkadaşınız!');
+                    return;
+                }
+                
+                if (targetData.friendRequests?.some(r => r.from === window.currentUser.id)) {
+                    showToast('Zaten istek göndermişsiniz!');
+                    return;
+                }
+                
+                await window.firebaseUpdateDoc(window.firebaseDoc(window.db, 'users', targetUser.id), {
+                    friendRequests: window.firebaseArrayUnion({
+                        from: window.currentUser.id,
+                        fromUsername: window.currentUser.username,
+                        fromAvatar: window.currentUser.avatar,
+                        timestamp: new Date().toISOString()
+                    })
+                });
+                
+                showToast('Arkadaşlık isteği gönderildi!');
+                closeModal('friendModal');
+                document.getElementById('friendUsername').value = '';
+            } catch (error) {
+                showToast('Hata: ' + error.message);
+            }
+        }
+
+        async function loadFriendRequests() {
+            if (!window.currentUser) return;
+            const list = document.getElementById('friendRequestsList');
+            const requests = window.currentUser.friendRequests || [];
+            
+            if (requests.length === 0) {
+                list.innerHTML = '<p style="text-align: center; opacity: 0.7;">Bekleyen istek yok.</p>';
+                return;
+            }
+            
+            list.innerHTML = requests.map(req => `
+                <div class="friend-request">
+                    <div class="friend-info">
+                        <img src="${req.fromAvatar}" class="theory-avatar">
+                        <span>${req.fromUsername}</span>
+                    </div>
+                    <div class="friend-actions">
+                        <button class="btn btn-small btn-success" onclick="acceptFriend('${req.from}')">Kabul</button>
+                        <button class="btn btn-small btn-danger" onclick="rejectFriend('${req.from}')">Reddet</button>
+                    </div>
+                </div>
+            `).join('');
+        }
+
+        async function acceptFriend(userId) {
+            try {
+                await window.firebaseUpdateDoc(window.firebaseDoc(window.db, 'users', window.currentUser.id), {
+                    friends: window.firebaseArrayUnion(userId),
+                    friendRequests: window.currentUser.friendRequests.filter(r => r.from !== userId)
+                });
+                await window.firebaseUpdateDoc(window.firebaseDoc(window.db, 'users', userId), {
+                    friends: window.firebaseArrayUnion(window.currentUser.id)
+                });
+                showToast('Arkadaşlık isteği kabul edildi!');
+                openProfileModal(window.currentUser.id);
+                loadUserFriends();
+            } catch (error) {
+                showToast('Hata: ' + error.message);
+            }
+        }
+
+        async function rejectFriend(userId) {
+            try {
+                await window.firebaseUpdateDoc(window.firebaseDoc(window.db, 'users', window.currentUser.id), {
+                    friendRequests: window.currentUser.friendRequests.filter(r => r.from !== userId)
+                });
+                showToast('İstek reddedildi');
+                openProfileModal(window.currentUser.id);
+            } catch (error) {
+                showToast('Hata: ' + error.message);
+            }
+        }
+
+        async function loadUserFriends() {
+            if (!window.currentUser || !window.currentUser.friends) return;
+            const list = document.getElementById('friendsList');
+            if (window.currentUser.friends.length === 0) {
+                list.innerHTML = '<p style="opacity: 0.7; font-size: 0.9rem;">Henüz arkadaşınız yok.</p>';
+                return;
+            }
+            
+            const friends = [];
+            for (const friendId of window.currentUser.friends) {
+                const doc = await window.firebaseGetDoc(window.firebaseDoc(window.db, 'users', friendId));
+                if (doc.exists()) friends.push({ id: doc.id, ...doc.data() });
+            }
+            
+            list.innerHTML = friends.map(f => `
+                <div class="menu-item" onclick="openProfileModal('${f.id}')" style="padding: 8px;">
+                    <img src="${f.avatar}" style="width: 30px; height: 30px; border-radius: 50%; border: 2px solid var(--primary);">
+                    <span>${f.username}</span>
+                </div>
+            `).join('');
+        }
+
+        // Content Functions
+        function openContentModal(type) {
+            document.getElementById('contentModalTitle').textContent = 
+                type === 'sbs' ? 'SBS Köşesi' : 
+                type === 'manga' ? 'Manga Haberleri' : 
+                type === 'anime' ? 'Anime Güncellemesi' : 'Haber';
+            document.getElementById('contentModalBody').innerHTML = contentData[type] || '<p>İçerik bulunamadı.</p>';
+            document.getElementById('contentModal').classList.add('active');
+        }
+
+        // Theories Functions
+        async function loadTheories() {
+            const theoriesRef = window.firebaseCollection(window.db, 'theories');
+            const q = window.firebaseQuery(theoriesRef, window.firebaseOrderBy('timestamp', 'desc'));
+            
+            window.firebaseOnSnapshot(q, (snapshot) => {
+                const list = document.getElementById('theoriesList');
+                if (snapshot.empty) {
+                    list.innerHTML = '<p style="text-align: center; opacity: 0.7;">Henüz teori yok. İlk siz paylaşın!</p>';
+                    return;
+                }
+                
+                list.innerHTML = snapshot.docs.map(doc => {
+                    const t = doc.data();
+                    const isLiked = window.currentUser?.likedTheories?.includes(doc.id);
+                    const isDisliked = window.currentUser?.dislikedTheories?.includes(doc.id);
+                    
+                    return `
+                        <div class="theory-card">
+                            <div class="theory-header">
+                                <img src="${t.authorAvatar}" class="theory-avatar" onclick="openProfileModal('${t.authorId}')">
+                                <div>
+                                    <div class="theory-author" onclick="openProfileModal('${t.authorId}')">${t.authorName}</div>
+                                    <div class="theory-time">${new Date(t.timestamp?.toDate?.() || t.timestamp).toLocaleString('tr-TR')}</div>
+                                </div>
+                            </div>
+                            <p>${t.content}</p>
+                            <div class="theory-actions">
+                                <button class="action-btn ${isLiked ? 'liked' : ''}" onclick="likeTheory('${doc.id}', ${!isLiked})">
+                                    <i class="fas fa-thumbs-up"></i> <span>${t.likes || 0}</span>
+                                </button>
+                                <button class="action-btn ${isDisliked ? 'disliked' : ''}" onclick="dislikeTheory('${doc.id}', ${!isDisliked})">
+                                    <i class="fas fa-thumbs-down"></i> <span>${t.dislikes || 0}</span>
+                                </button>
+                                <button class="action-btn" onclick="saveTheory('${doc.id}', ${!window.currentUser?.savedTheories?.includes(doc.id)})">
+                                    <i class="fas fa-bookmark"></i> ${window.currentUser?.savedTheories?.includes(doc.id) ? 'Kaydedildi' : 'Kaydet'}
+                                </button>
+                            </div>
+                        </div>
+                    `;
+                }).join('');
+            });
+        }
+
+        function openTheoryModal() {
+            if (!window.currentUser) {
+                openAuthModal();
+                return;
+            }
+            const content = prompt('Teorinizi yazın:');
+            if (!content) return;
+            
+            window.firebaseAddDoc(window.firebaseCollection(window.db, 'theories'), {
+                authorId: window.currentUser.id,
+                authorName: window.currentUser.username,
+                authorAvatar: window.currentUser.avatar,
+                content,
+                likes: 0,
+                dislikes: 0,
+                likedBy: [],
+                dislikedBy: [],
+                timestamp: new Date()
+            }).then(() => {
+                showToast('Teori paylaşıldı!');
+                window.firebaseUpdateDoc(window.firebaseDoc(window.db, 'users', window.currentUser.id), {
+                    theories: (window.currentUser.theories || 0) + 1
+                });
+            });
+        }
+
+        async function likeTheory(theoryId, like) {
+            if (!window.currentUser) {
+                openAuthModal();
+                return;
+            }
+            
+            try {
+                const theoryRef = window.firebaseDoc(window.db, 'theories', theoryId);
+                const theoryDoc = await window.firebaseGetDoc(theoryRef);
+                if (!theoryDoc.exists()) return;
+                
+                const data = theoryDoc.data();
+                const alreadyLiked = data.likedBy?.includes(window.currentUser.id);
+                const alreadyDisliked = data.dislikedBy?.includes(window.currentUser.id);
+                
+                if (like && alreadyLiked) {
+                    await window.firebaseUpdateDoc(theoryRef, {
+                        likes: (data.likes || 0) - 1,
+                        likedBy: window.firebaseArrayRemove(window.currentUser.id)
+                    });
+                    await window.firebaseUpdateDoc(window.firebaseDoc(window.db, 'users', window.currentUser.id), {
+                        likedTheories: window.firebaseArrayRemove(theoryId)
+                    });
+                } else if (like && !alreadyLiked) {
+                    let updates = {
+                        likes: (data.likes || 0) + 1,
+                        likedBy: window.firebaseArrayUnion(window.currentUser.id)
+                    };
+                    if (alreadyDisliked) {
+                        updates.dislikes = (data.dislikes || 0) - 1;
+                        updates.dislikedBy = window.firebaseArrayRemove(window.currentUser.id);
+                    }
+                    await window.firebaseUpdateDoc(theoryRef, updates);
+                    await window.firebaseUpdateDoc(window.firebaseDoc(window.db, 'users', window.currentUser.id), {
+                        likedTheories: window.firebaseArrayUnion(theoryId),
+                        dislikedTheories: alreadyDisliked ? window.firebaseArrayRemove(theoryId) : window.currentUser.dislikedTheories || []
+                    });
+                    
+                    if (!alreadyDisliked && data.authorId !== window.currentUser.id) {
+                        const authorRef = window.firebaseDoc(window.db, 'users', data.authorId);
+                        const authorDoc = await window.firebaseGetDoc(authorRef);
+                        if (authorDoc.exists()) {
+                            await window.firebaseUpdateDoc(authorRef, {
+                                totalLikes: (authorDoc.data().totalLikes || 0) + 1
+                            });
+                        }
+                    }
+                }
+            } catch (error) {
+                showToast('Hata: ' + error.message);
+            }
+        }
+
+        async function dislikeTheory(theoryId, dislike) {
+            if (!window.currentUser) {
+                openAuthModal();
+                return;
+            }
+            
+            try {
+                const theoryRef = window.firebaseDoc(window.db, 'theories', theoryId);
+                const theoryDoc = await window.firebaseGetDoc(theoryRef);
+                if (!theoryDoc.exists()) return;
+                
+                const data = theoryDoc.data();
+                const alreadyDisliked = data.dislikedBy?.includes(window.currentUser.id);
+                const alreadyLiked = data.likedBy?.includes(window.currentUser.id);
+                
+                if (dislike && alreadyDisliked) {
+                    await window.firebaseUpdateDoc(theoryRef, {
+                        dislikes: (data.dislikes || 0) - 1,
+                        dislikedBy: window.firebaseArrayRemove(window.currentUser.id)
+                    });
+                    await window.firebaseUpdateDoc(window.firebaseDoc(window.db, 'users', window.currentUser.id), {
+                        dislikedTheories: window.firebaseArrayRemove(theoryId)
+                    });
+                } else if (dislike && !alreadyDisliked) {
+                    let updates = {
+                        dislikes: (data.dislikes || 0) + 1,
+                        dislikedBy: window.firebaseArrayUnion(window.currentUser.id)
+                    };
+                    if (alreadyLiked) {
+                        updates.likes = (data.likes || 0) - 1;
+                        updates.likedBy = window.firebaseArrayRemove(window.currentUser.id);
+                    }
+                    await window.firebaseUpdateDoc(theoryRef, updates);
+                    await window.firebaseUpdateDoc(window.firebaseDoc(window.db, 'users', window.currentUser.id), {
+                        dislikedTheories: window.firebaseArrayUnion(theoryId),
+                        likedTheories: alreadyLiked ? window.firebaseArrayRemove(theoryId) : window.currentUser.likedTheories || []
+                    });
+                }
+            } catch (error) {
+                showToast('Hata: ' + error.message);
+            }
+        }
+
+        async function saveTheory(theoryId, save) {
+            if (!window.currentUser) {
+                openAuthModal();
+                return;
+            }
+            
+            try {
+                await window.firebaseUpdateDoc(window.firebaseDoc(window.db, 'users', window.currentUser.id), {
+                    savedTheories: save ?
+                        window.firebaseArrayUnion(theoryId) :
+                        window.firebaseArrayRemove(theoryId)
+                });
+                showToast(save ? 'Teori kaydedildi!' : 'Kayıt kaldırıldı');
+            } catch (error) {
+                showToast('Hata: ' + error.message);
+            }
+        }
+
+        // Quiz Functions
+        let currentQuiz = [];
+        let currentQuestion = 0;
+        let quizScore = 0;
+
+        function startQuiz() {
+            currentQuiz = [...quizQuestions].sort(() => 0.5 - Math.random()).slice(0, 10);
+            currentQuestion = 0;
+            quizScore = 0;
+            showQuestion();
+        }
+
+        function showQuestion() {
+            if (currentQuestion >= currentQuiz.length) {
+                document.getElementById('quizQuestion').textContent = 'Yarışma Bitti!';
+                document.getElementById('quizOptions').innerHTML = 
+                    `<button class="btn btn-primary" onclick="startQuiz()" style="width: 100%;">Tekrar Başlat</button>`;
+                document.getElementById('quizScore').textContent = `Skor: ${quizScore}/10`;
+                
+                if (window.currentUser && quizScore >= 7) {
+                    const bonus = quizScore * 100;
+                    window.firebaseUpdateDoc(window.firebaseDoc(window.db, 'users', window.currentUser.id), {
+                        bounty: (window.currentUser.bounty || 0) + bonus
+                    });
+                    showToast(`Tebrikler! ${bonus} Bounty kazandınız!`);
+                }
+                return;
+            }
+            
+            const q = currentQuiz[currentQuestion];
+            document.getElementById('quizQuestion').textContent = `Soru ${currentQuestion + 1}/10: ${q.q}`;
+            document.getElementById('quizOptions').innerHTML = q.options.map((opt, i) => 
+                `<div class="quiz-option" onclick="answerQuiz(${i})">${opt}</div>`
+            ).join('');
+            document.getElementById('quizScore').textContent = `Skor: ${quizScore}`;
+        }
+
+        function answerQuiz(answer) {
+            const q = currentQuiz[currentQuestion];
+            const options = document.querySelectorAll('.quiz-option');
+            
+            options[q.correct].classList.add('correct');
+            if (answer !== q.correct) {
+                options[answer].classList.add('wrong');
+            } else {
+                quizScore++;
+            }
+            
+            setTimeout(() => {
+                currentQuestion++;
+                showQuestion();
+            }, 1500);
+        }
+
+        // Alliance Functions
+        async function loadAlliances() {
+            const alliancesRef = window.firebaseCollection(window.db, 'alliances');
+            
+            window.firebaseOnSnapshot(alliancesRef, (snapshot) => {
+                const list = document.getElementById('allianceList');
+                if (snapshot.empty) {
+                    list.innerHTML = '<p style="text-align: center; opacity: 0.7;">Henüz ittifak yok.</p>';
+                    return;
+                }
+                
+                list.innerHTML = snapshot.docs.map(doc => {
+                    const a = doc.data();
+                    return `
+                        <div class="alliance-card" onclick="openAllianceDetail('${doc.id}')">
+                            <img src="${a.flag}" class="alliance-flag">
+                            <div class="alliance-name">${a.name}</div>
+                            <div class="alliance-members">${a.members?.length || 1} Üye</div>
+                            <div style="margin-top: 10px; color: var(--primary); font-weight: bold;">
+                                ₿ ${a.totalBounty || 0}
+                            </div>
+                        </div>
+                    `;
+                }).join('');
+            });
+        }
+
+        function openCreateAllianceModal() {
+            if (!window.currentUser) {
+                openAuthModal();
+                return;
+            }
+            if (window.currentUser.alliance) {
+                showToast('Zaten bir ittifaktasınız!');
+                return;
+            }
+            document.getElementById('createAllianceModal').classList.add('active');
+        }
+
+        function previewAllianceFlag(input) {
+            if (input.files && input.files[0]) {
+                const reader = new FileReader();
+                reader.onload = function(e) {
+                    document.getElementById('allianceFlagPreview').src = e.target.result;
+                    document.getElementById('allianceFlagPreview').classList.add('active');
+                };
+                reader.readAsDataURL(input.files[0]);
+            }
+        }
+
+        async function createAlliance() {
+            const name = document.getElementById('allianceName').value;
+            const flagFile = document.getElementById('allianceFlag').files[0];
+            
+            if (!name) {
+                showToast('İttifak adı girin!');
+                return;
+            }
+            
+            if (window.currentUser.bounty < 1000) {
+                showToast('Yetersiz Bounty! (Gereken: 1000)');
+                return;
+            }
+            
+            let flagBase64 = 'https://via.placeholder.com/100';
+            if (flagFile) {
+                flagBase64 = await new Promise((resolve) => {
+                    const reader = new FileReader();
+                    reader.onload = (e) => resolve(e.target.result);
+                    reader.readAsDataURL(flagFile);
+                });
+            }
+            
+            try {
+                const allianceData = {
+                    name,
+                    flag: flagBase64,
+                    captain: window.currentUser.id,
+                    captainName: window.currentUser.username,
+                    members: [{
+                        id: window.currentUser.id,
+                        username: window.currentUser.username,
+                        avatar: window.currentUser.avatar,
+                        role: 'captain'
+                    }],
+                    totalBounty: window.currentUser.bounty,
+                    createdAt: new Date()
+                };
+                
+                const docRef = await window.firebaseAddDoc(window.firebaseCollection(window.db, 'alliances'), allianceData);
+                
+                await window.firebaseUpdateDoc(window.firebaseDoc(window.db, 'users', window.currentUser.id), {
+                    bounty: window.currentUser.bounty - 1000,
+                    alliance: docRef.id,
+                    allianceRole: 'captain'
+                });
+                
+                window.currentUser.bounty -= 1000;
+                window.currentUser.alliance = docRef.id;
+                window.currentUser.allianceRole = 'captain';
+                
+                updateUIForUser();
+                closeModal('createAllianceModal');
+                showToast('İttifak kuruldu!');
+            } catch (error) {
+                showToast('Hata: ' + error.message);
+            }
+        }
+
+        async function openAllianceDetail(allianceId) {
+            try {
+                const doc = await window.firebaseGetDoc(window.firebaseDoc(window.db, 'alliances', allianceId));
+                if (!doc.exists()) return;
+                
+                const a = doc.data();
+                document.getElementById('allianceDetailName').textContent = a.name;
+                document.getElementById('allianceDetailFlag').src = a.flag;
+                
+                const isMember = a.members.some(m => m.id === window.currentUser?.id);
+                const isCaptain = a.captain === window.currentUser?.id;
+                
+                document.getElementById('allianceMembers').innerHTML = a.members.map(m => `
+                    <div class="member-item">
+                        <div style="display: flex; align-items: center; gap: 10px;">
+                            <img src="${m.avatar}" style="width: 40px; height: 40px; border-radius: 50%; border: 2px solid var(--primary);">
+                            <div>
+                                <div>${m.username}</div>
+                                <span class="member-role">${m.role === 'captain' ? 'Kaptan' : m.role === 'vice' ? 'Yardımcı' : 'Üye'}</span>
+                            </div>
+                        </div>
+                        ${isCaptain && m.id !== window.currentUser.id ? 
+                            `<button class="kick-btn" onclick="kickMember('${allianceId}', '${m.id}')">At</button>` : ''}
+                    </div>
+                `).join('');
+                
+                const actionsDiv = document.getElementById('allianceActions');
+                if (!window.currentUser) {
+                    actionsDiv.innerHTML = '<p>Giriş yapmalısınız</p>';
+                } else if (isMember) {
+                    actionsDiv.innerHTML = '<button class="btn btn-danger" onclick="leaveAlliance(\'' + allianceId + '\')">İttifaktan Ayrıl</button>';
+                } else if (!window.currentUser.alliance) {
+                    actionsDiv.innerHTML = '<button class="btn btn-primary" onclick="joinAlliance(\'' + allianceId + '\')">Katıl</button>';
+                } else {
+                    actionsDiv.innerHTML = '<p>Zaten bir ittifaktasınız</p>';
+                }
+                
+                document.getElementById('allianceDetailModal').classList.add('active');
+            } catch (error) {
+                showToast('Hata: ' + error.message);
+            }
+        }
+
+        async function joinAlliance(allianceId) {
+            try {
+                const allianceRef = window.firebaseDoc(window.db, 'alliances', allianceId);
+                const allianceDoc = await window.firebaseGetDoc(allianceRef);
+                const a = allianceDoc.data();
+                
+                await window.firebaseUpdateDoc(allianceRef, {
+                    members: window.firebaseArrayUnion({
+                        id: window.currentUser.id,
+                        username: window.currentUser.username,
+                        avatar: window.currentUser.avatar,
+                        role: 'member'
+                    }),
+                    totalBounty: (a.totalBounty || 0) + (window.currentUser.bounty || 0)
+                });
+                
+                await window.firebaseUpdateDoc(window.firebaseDoc(window.db, 'users', window.currentUser.id), {
+                    alliance: allianceId,
+                    allianceRole: 'member'
+                });
+                
+                window.currentUser.alliance = allianceId;
+                window.currentUser.allianceRole = 'member';
+                
+                showToast('İttifağa katıldınız!');
+                closeModal('allianceDetailModal');
+            } catch (error) {
+                showToast('Hata: ' + error.message);
+            }
+        }
+
+        async function leaveAlliance(allianceId) {
+            try {
+                const allianceRef = window.firebaseDoc(window.db, 'alliances', allianceId);
+                const allianceDoc = await window.firebaseGetDoc(allianceRef);
+                const a = allianceDoc.data();
+                
+                await window.firebaseUpdateDoc(allianceRef, {
+                    members: a.members.filter(m => m.id !== window.currentUser.id),
+                    totalBounty: (a.totalBounty || 0) - (window.currentUser.bounty || 0)
+                });
+                
+                await window.firebaseUpdateDoc(window.firebaseDoc(window.db, 'users', window.currentUser.id), {
+                    alliance: null,
+                    allianceRole: null
+                });
+                
+                window.currentUser.alliance = null;
+                window.currentUser.allianceRole = null;
+                
+                showToast('İttifaktan ayrıldınız');
+                closeModal('allianceDetailModal');
+            } catch (error) {
+                showToast('Hata: ' + error.message);
+            }
+        }
+
+        async function kickMember(allianceId, memberId) {
+            if (!confirm('Bu üyeyi atmak istediğinize emin misiniz?')) return;
+            
+            try {
+                const allianceRef = window.firebaseDoc(window.db, 'alliances', allianceId);
+                const allianceDoc = await window.firebaseGetDoc(allianceRef);
+                const a = allianceDoc.data();
+                
+                const member = a.members.find(m => m.id === memberId);
+                
+                await window.firebaseUpdateDoc(allianceRef, {
+                    members: a.members.filter(m => m.id !== memberId),
+                    totalBounty: (a.totalBounty || 0) - (member.bounty || 0)
+                });
+                
+                await window.firebaseUpdateDoc(window.firebaseDoc(window.db, 'users', memberId), {
+                    alliance: null,
+                    allianceRole: null
+                });
+                
+                showToast('Üye atıldı');
+                openAllianceDetail(allianceId);
+            } catch (error) {
+                showToast('Hata: ' + error.message);
+            }
+        }
+
+        function switchAllianceTab(tab) {
+            document.querySelectorAll('#alliancesSection .tab').forEach(t => t.classList.remove('active'));
+            event.target.classList.add('active');
+        }
+
+        // Leaderboard Functions
+        async function loadLeaderboard() {
+            const usersRef = window.firebaseCollection(window.db, 'users');
+            const q = window.firebaseQuery(usersRef, window.firebaseOrderBy('bounty', 'desc'), window.firebaseLimit(10));
+            
+            window.firebaseOnSnapshot(q, (snapshot) => {
+                const list = document.getElementById('leaderboardContent');
+                const topList = document.getElementById('topPirates');
+                
+                const users = snapshot.docs.map((doc, i) => ({
+                    rank: i + 1,
+                    id: doc.id,
+                    ...doc.data()
+                }));
+                
+                const html = users.map(u => `
+                    <div class="leaderboard-item">
+                        <div class="leaderboard-rank">#${u.rank}</div>
+                        <img src="${u.avatar}" class="leaderboard-avatar" onclick="openProfileModal('${u.id}')">
+                        <div class="leaderboard-info">
+                            <div class="leaderboard-name">${u.username}</div>
+                        </div>
+                        <div class="leaderboard-bounty">₿ ${u.bounty || 0}</div>
+                    </div>
+                `).join('');
+                
+                list.innerHTML = html;
+                topList.innerHTML = users.slice(0, 5).map(u => `
+                    <div class="leaderboard-item" style="padding: 8px;">
+                        <div class="leaderboard-rank" style="font-size: 1rem;">#${u.rank}</div>
+                        <img src="${u.avatar}" class="leaderboard-avatar" style="width: 30px; height: 30px;" onclick="openProfileModal('${u.id}')">
+                        <div class="leaderboard-info">
+                            <div class="leaderboard-name" style="font-size: 0.9rem;">${u.username}</div>
+                        </div>
+                    </div>
+                `).join('');
+            });
+        }
+
+        function switchLeaderboard(type) {
+            document.querySelectorAll('#leaderboardSection .tab').forEach(t => t.classList.remove('active'));
+            event.target.classList.add('active');
+            
+            if (type === 'alliances') {
+                const alliancesRef = window.firebaseCollection(window.db, 'alliances');
+                const q = window.firebaseQuery(alliancesRef, window.firebaseOrderBy('totalBounty', 'desc'));
+                
+                window.firebaseGetDocs(q).then(snapshot => {
+                    const list = document.getElementById('leaderboardContent');
+                    list.innerHTML = snapshot.docs.map((doc, i) => {
+                        const a = doc.data();
+                        return `
+                            <div class="leaderboard-item">
+                                <div class="leaderboard-rank">#${i + 1}</div>
+                                <img src="${a.flag}" class="leaderboard-avatar" style="border-radius: 8px;">
+                                <div class="leaderboard-info">
+                                    <div class="leaderboard-name">${a.name}</div>
+                                    <div style="font-size: 0.8rem; opacity: 0.7;">${a.members?.length || 1} Üye</div>
+                                </div>
+                                <div class="leaderboard-bounty">₿ ${a.totalBounty || 0}</div>
+                            </div>
+                        `;
+                    }).join('');
+                });
+            } else {
+                loadLeaderboard();
+            }
+        }
+
+        // Chat Functions
+        function loadChatMessages() {
+            const chatRef = window.firebaseCollection(window.db, 'chat');
+            const q = window.firebaseQuery(chatRef, window.firebaseOrderBy('timestamp', 'desc'), window.firebaseLimit(50));
+            
+            window.firebaseOnSnapshot(q, (snapshot) => {
+                const container = document.getElementById('chatMessages');
+                const messages = snapshot.docs.reverse().map(doc => {
+                    const m = doc.data();
+                    return `
+                        <div class="chat-message">
+                            <img src="${m.avatar}" class="chat-avatar" onclick="openProfileModal('${m.userId}')">
+                            <div>
+                                <div class="chat-username" onclick="openProfileModal('${m.userId}')">${m.username}</div>
+                                <div class="chat-bubble">${m.text}</div>
+                            </div>
+                        </div>
+                    `;
+                }).join('');
+                
+                container.innerHTML = messages;
+                container.scrollTop = container.scrollHeight;
+            });
+        }
+
+        async function sendMessage() {
+            if (!window.currentUser) {
+                openAuthModal();
+                return;
+            }
+            
+            const input = document.getElementById('chatInput');
+            const text = input.value.trim();
+            if (!text) return;
+            
+            await window.firebaseAddDoc(window.firebaseCollection(window.db, 'chat'), {
+                userId: window.currentUser.id,
+                username: window.currentUser.username,
+                avatar: window.currentUser.avatar,
+                text,
+                timestamp: new Date()
+            });
+            
+            input.value = '';
+        }
+
+        // Poll Functions
+        async function loadPollData() {
+            const pollRef = window.firebaseDoc(window.db, 'polls', 'yonko');
+            const pollDoc = await window.firebaseGetDoc(pollRef);
+            
+            if (pollDoc.exists()) {
+                updatePollUI(pollDoc.data());
+            }
+        }
+
+        async function votePoll(option) {
+            if (!window.currentUser) {
+                openAuthModal();
+                return;
+            }
+            
+            const pollRef = window.firebaseDoc(window.db, 'polls', 'yonko');
+            const pollDoc = await window.firebaseGetDoc(pollRef);
+            const data = pollDoc.exists() ? pollDoc.data() : { votes: [0,0,0,0], votedBy: {} };
+            
+            if (data.votedBy && data.votedBy[window.currentUser.id]) {
+                showToast('Zaten oy verdiniz!');
+                return;
+            }
+            
+            const newVotes = [...data.votes];
+            newVotes[option]++;
+            
+            await window.firebaseSetDoc(pollRef, {
+                votes: newVotes,
+                votedBy: { ...data.votedBy, [window.currentUser.id]: true }
+            });
+            
+            updatePollUI({ votes: newVotes });
+            showToast('Oy verildi!');
+        }
+
+        function updatePollUI(data) {
+            const total = data.votes.reduce((a, b) => a + b, 0);
+            data.votes.forEach((v, i) => {
+                const percent = total > 0 ? Math.round((v / total) * 100) : 0;
+                document.getElementById(`pollBar${i}`).style.width = percent + '%';
+                document.getElementById(`pollPercent${i}`).textContent = percent + '%';
+            });
+        }
+
+        // Utility Functions
+        function showToast(message) {
+            const toast = document.getElementById('toast');
+            toast.textContent = message;
+            toast.classList.add('show');
+            setTimeout(() => toast.classList.remove('show'), 3000);
+        }
+
+        // Close modals on outside click
+        document.querySelectorAll('.modal-overlay').forEach(modal => {
+            modal.addEventListener('click', (e) => {
+                if (e.target === modal) modal.classList.remove('active');
+            });
+        });
+
+        // Enter key for chat
+        document.getElementById('chatInput')?.addEventListener('keypress', (e) => {
+            if (e.key === 'Enter') sendMessage();
+        });
+    </script>
+</body>
+</html>
